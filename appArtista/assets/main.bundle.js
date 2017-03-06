@@ -124,7 +124,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MasterurlService = (function () {
     function MasterurlService() {
-        this._Url = 'https://examen-twj-laracristian-cristian3006.c9users.io';
+        this._Url = 'https://examen-twj-laracristian-cristian3006.c9users.io/';
     }
     MasterurlService.prototype.getUrl = function () {
         return this._Url;
