@@ -1,0 +1,96 @@
+<h1>{{titulo}}</h1>
+
+<div class="row">
+  <div class="col-sm-12">
+    <a [routerLink]="['/listaAlbum']">Ver lista de  Albums</a>
+  </div>
+  <div class="col-sm-12 animated flipInX" *ngFor="let artista of artistas">
+
+
+    <div class="text-center">
+      <p>ID {{artista.id}}</p>
+      <h3>{{artista.nombre}}</h3>
+      <p>Pais: {{artista.paisResidencia}}</p>
+      <p>Estilo: {{artista.estilo}}</p>
+    </div>
+
+    <div class="row animated flipInY" [hidden]="!artista.formularioCerrado">
+
+      <div class="col-sm-5">
+        <button class="btn btn-block btn-info"
+                (click)="artista.formularioCerrado = !artista.formularioCerrado"
+        >Actualizar</button>
+      </div>
+
+      <div class="col-sm-2"></div>
+
+      <div class="col-sm-5">
+
+        <button class="btn btn-block btn-danger" (click)="borrarArtista(artista.id)">Borrar</button>
+
+      </div>
+
+      <div class="col-sm-12">
+        <a [routerLink]="['/album',artista.id]">Crear  Albums</a>
+      </div>
+
+
+    </div>
+
+    <div class="div" [hidden]="artista.formularioCerrado">
+
+      <form action="">
+        <form class="animated bounceIn" (ngSubmit)="actualizarArtista(artista)" #NuevoArtistaForm="ngForm">
+
+          <div class="form-group">
+            <label>Tienda</label>
+            <input required
+                   minlength="4"
+                   type="text"
+                   class="form-control"
+                   placeholder="Digite un nombre de Artista como: Metallica"
+                   name="nombre"
+                   [(ngModel)]="artista.nombre"
+                   #nombre="ngModel"
+                   #nombreElm>
+          </div>
+          <div class="form-group">
+            <label>Pais Residencia</label>
+            <input required
+                   minlength="4"
+                   type="text"
+                   class="form-control"
+                   placeholder="Digite un pais  como: Ecuador"
+                   name="pais"
+                   [(ngModel)]="artista.paisResidencia"
+                   #pais="ngModel"
+                   #paisElm>
+          </div>
+          <div class="form-group">
+            <label for="power">Estilo</label>
+            <select class="form-control" id="power"
+                    required
+                    [(ngModel)]="artista.estilo" name="power"
+                    #power="ngModel">
+              <option *ngFor="let pow of estilos" [value]="pow">{{pow}}</option>
+            </select>
+            <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
+              Power is required
+            </div>
+          </div>
+
+          <button [disabled]="disabledButtons.NuevoArtistaFormSubmitButton||!NuevoArtistaForm.valid" type="submit"
+                  class="btn btn-block btn-success">Update
+
+          </button>
+
+          <button type="button"
+                  class="btn btn-block btn-warning"
+                  (click)="artista.formularioCerrado = !artista.formularioCerrado">
+            Cancelar
+          </button>
+        </form>
+      </form>
+    </div>
+  </div>
+</div>

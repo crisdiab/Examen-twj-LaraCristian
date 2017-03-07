@@ -1,0 +1,39 @@
+
+<div class="container fondoInicio">
+  <ul class="nav nav-pills ">
+
+    <li>
+      <a  [routerLink]="['/']">
+        INICIO
+      </a>
+    </li>
+
+    <li class="dropdown">
+      <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artista <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a  [routerLink]="['/artista']">Artista</a></li>
+        <li><a  [routerLink]="['/listaArtista']">Lista de Artistas</a></li>
+
+      </ul>
+    </li>
+    <li>
+      <a  class="colorLetra"  [routerLink]="['/listaAlbum']">
+        Albums
+      </a>
+    </li>
+
+
+  </ul>
+  <br><br>
+
+  <router-outlet></router-outlet>
+
+
+
+  <div class="navbar navbar-fixed-bottom">
+    Desarrolado por Cristian Raul Lara Balarezo
+  </div>
+</div>
+
+
+

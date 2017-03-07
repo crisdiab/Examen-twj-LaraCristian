@@ -1,0 +1,55 @@
+
+
+<div style='background-color:white;color:black;'>
+  <form class="animated bounceIn" (ngSubmit)="crearAlbum(NuevoArtistaForm)" #NuevoArtistaForm="ngForm" >
+
+    <div class="form-group">
+      <label>Nombre del Album</label>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre"
+               required
+               [(ngModel)]="nuevoAlbum.nombre" name="nombre"
+               #nombre="ngModel">
+        <div [hidden]="nombre.valid || nombre.pristine || nombre.touched"
+             class="alert alert-danger">
+          Nombre es requerido
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaLanzamiento">Fecha de Lanzamiento</label>
+      <input type="date" class="form-control" id="fechaLanzamiento"
+
+             [(ngModel)]="nuevoAlbum.fechaLanzamiento" name="fechaLanzamiento"
+             #fechaLanzamiento="ngModel">
+
+    </div>
+
+    <div class="form-group">
+      <label>Portada</label>
+      <div class="form-group">
+        <label for="portada">URL de Portada</label>
+        <input type="text" class="form-control" id="portada"
+
+               [(ngModel)]="nuevoAlbum.UrlPortada" name="portada"
+               #portada="ngModel">
+
+      </div>
+    </div>
+
+
+
+
+
+
+    <br>
+
+    <button type="submit" class="btn btn-success">Crear Album</button>
+    <button class="btn btn-link">Ver lista de Albums</button>
+
+  </form>
+
+</div>
+
